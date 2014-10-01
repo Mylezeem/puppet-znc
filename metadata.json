@@ -1,0 +1,14 @@
+{
+  "name": "puppet-znc",
+  "version": "0.1.0",
+  "author": "yguenane",
+  "summary": "A puppet module that manages ZNC, the open source IRC bouncer",
+  "license": "Apache 2.0",
+  "source": "https://github.com/Mylezeem/puppet-znc",
+  "project_page": "https://github.com/Mylezeem/puppet-znc",
+  "issues_url": "https://github.com/Mylezeem/puppet-znc/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
