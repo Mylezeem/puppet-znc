@@ -38,11 +38,11 @@
 class znc (
   $default_port   = '5000',
   $package_ensure = 'present',
-  $package_name   = $znc::params::package_name,
-  $service_ensure = 'runnning',
-  $service_name   = $znc::params::service_name,
+  $package_name   = 'znc',
+  $service_ensure = 'running',
+  $service_name   = 'znc',
   $service_manage = true,
-  $global_modules = $znc::params::global_modules,
+  $global_modules = ['webadmin'],
   $user_ensure    = 'present',
   $user_name      = 'znc',
   $user_home      = '/var/lib/znc',
@@ -54,6 +54,7 @@ class znc (
 ) inherits znc::params {
 
   # Parameters validation
+  validate_array($global_modules)
   validate_bool($service_manage, $ipv4_enable, $ipv6_enable, $ssl_enable)
   validate_string($user_name, $package_name)
   validate_absolute_path($user_home, $user_shell)
@@ -68,6 +69,6 @@ class znc (
   class { 'znc::install': } ->
   class { 'znc::config' : } ->
   class { 'znc::service' : } ->
-  anchor { 'znc::end' : } ->
+  anchor { 'znc::end' : }
 
 }

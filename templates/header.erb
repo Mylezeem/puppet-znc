@@ -10,13 +10,12 @@
 
 Version = 1.4
 <Listener 1>
-    Port = <% @default_port %>
-    IPv4 = <% @ipv4_enable %>
-    IPv6 = <% @ipv6_enable %>
-    SSL = <% @ssl_enable %>
+    Port = <%= @default_port %>
+    IPv4 = <%= @ipv4_enable %>
+    IPv6 = <%= @ipv6_enable %>
+    SSL = <%= @ssl_enable %>
 </listener>
-
-<%= @global_modules.each do |module| -%>
-LoadModule = <% module %>
-<%= end -%>
+<% @global_modules.each do |znc_module| -%>
+LoadModule = <%= znc_module %>
+<% end -%>
 
