@@ -36,6 +36,7 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class znc (
+  $bind_ip        = '127.0.0.1',
   $default_port   = '5000',
   $package_ensure = 'present',
   $package_name   = 'znc',
@@ -56,7 +57,7 @@ class znc (
   # Parameters validation
   validate_array($global_modules)
   validate_bool($service_manage, $ipv4_enable, $ipv6_enable, $ssl_enable)
-  validate_string($user_name, $package_name)
+  validate_string($user_name, $package_name, $bind_ip)
   validate_absolute_path($user_home, $user_shell)
   validate_re($package_ensure, ['^absent$', '^installed$', '^latest$', '^present$', '^[\d\.\-]+$'], "Invalid package_ensure variable: ${package_ensure}")
   validate_re($user_ensure, ['^absent$', '^role$', '^present$'], "Invalid user_ensure variable: ${user_ensure}")
